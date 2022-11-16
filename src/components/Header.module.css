@@ -1,0 +1,45 @@
+header {
+  height: 10%;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d7f6e2;
+}
+
+.button {
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+nav {
+  display: flex;
+}
+
+nav > ul {
+  list-style: none;
+}
+
+nav > ul > li {
+  float: left;
+  cursor: pointer;
+  margin-right: 10px;
+  color: rgba(42, 117, 183, 0.65);
+}
+
+nav > ul > li:active,
+nav > ul > li:hover {
+  color: #2a75b7;
+  text-decoration: underline #2a75b7 2px;
+}
+
+.activeLi {
+  color: #2a75b7;
+  text-decoration: underline #2a75b7 2px;
+}

@@ -1,0 +1,30 @@
+.footer {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #d1983e;
+}
+
+.input {
+  width: 70%;
+  height: 60%;
+  border: 0px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.button {
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
+  width: 20%;
+  height: 62%;
+  font-size: 1.5rem;
+  background-color: #6aa2bc;
+  border-radius: 0px 10px 10px 0px;
+}

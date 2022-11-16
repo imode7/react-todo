@@ -1,0 +1,25 @@
+.article {
+  height: 80%;
+  display: flex;
+  width: 100%;
+  background-color: #6aa2bc;
+  align-items: baseline;
+}
+
+input {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+section > div {
+  display: flex;
+  align-items: center;
+}
