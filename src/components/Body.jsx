@@ -6,10 +6,28 @@ export default function Body() {
     <article className={styles.article}>
       <section>
         <div>
-          <input type="checkbox" />
-          <span>강의 보기</span>
+          <ul>
+            {JSON.parse(localStorage.getItem("todo")).map((param, idx) => {
+              return param.done === false ? (
+                <li key={idx}>
+                  <div>
+                    <input type="checkbox" />
+                    <span>{param.title}</span>
+                  </div>
+                  <img src="/images/bin.png" alt="" />
+                </li>
+              ) : (
+                <li>
+                  <div>
+                    <input type="checkbox" checked />
+                    <span>{param.title}</span>
+                  </div>
+                  <img src="/images/bin.png" alt="" />
+                </li>
+              );
+            })}
+          </ul>
         </div>
-        <img src="/images/bin.png" alt="" />
       </section>
     </article>
   );

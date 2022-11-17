@@ -1,14 +1,13 @@
-import React, { createContext } from "react";
+import React from "react";
 import styles from "./App.module.css";
 import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
-
-const ThemeContext = createContext(localStorage.getItem("theme"));
+import { DarkModeProvider } from "../context/DarkModeContext";
 
 export default function App() {
   return (
-    <ThemeContext.Provider value="light">
+    <DarkModeProvider>
       <div className={styles.body}>
         <div className={styles.center}>
           <Header />
@@ -16,6 +15,6 @@ export default function App() {
           <Footer />
         </div>
       </div>
-    </ThemeContext.Provider>
+    </DarkModeProvider>
   );
 }

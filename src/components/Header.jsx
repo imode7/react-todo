@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Header.module.css";
+import { DarkModeContext } from "../context/DarkModeContext";
 
 const menuList = ["All", "Active", "Completed"];
 
 export default function Header() {
+  const { toggleDarkMode } = useContext(DarkModeContext);
   const [active, setActive] = useState(0);
 
   return (
     <header>
-      <button className={styles.button}>
+      <button className={styles.button} onClick={toggleDarkMode}>
         <img src="/images/light-icon.png" alt="" />
       </button>
       <nav>
