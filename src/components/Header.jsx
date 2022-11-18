@@ -1,12 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import { DarkModeContext } from "../context/DarkModeContext";
-
-const menuList = ["All", "Active", "Completed"];
+import { MenuListContext } from "../context/MenuListContext";
 
 export default function Header() {
+  const [menuList, setMenuList] = useState([]);
+  const [active, setActive] = useState("All");
+
+  const { handleChangeMenu } = useContext(MenuListContext);
   const { toggleDarkMode } = useContext(DarkModeContext);
-  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    fetch(`/Menu.json`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMenuList(data);
+      });
+  }, []);
 
   return (
     <header>
@@ -18,8 +28,10 @@ export default function Header() {
           {menuList.map((param, idx) => (
             <li
               key={idx}
-              onClick={() => setActive(idx)}
-              className={active === idx ? styles.activeLi : null}
+              onClick={() => {
+                return setActive(param), handleChangeMenu(param);
+              }}
+              className={active === param ? styles.activeLi : null}
             >
               {param}
             </li>

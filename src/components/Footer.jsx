@@ -1,45 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styles from "./Footer.module.css";
+import { TodoContext } from "../context/TodoContext";
 
 export default function Header() {
-  const [todo, setTodo] = useState("");
-  const [localTodo, setLocalTodo] = useState([]);
+  const { handleInputTodo, inputTodo, addTodo } = useContext(TodoContext);
 
-  const handleTodo = (e) => {
-    setTodo(e.target.value);
+  const handleEnter = (e) => {
+    if (e.key === "Enter") addTodo();
   };
-
-  const saveKeyLocalStorage = (e) => {
-    if (e.key === "Enter") {
-      saveLocalStorage();
-    }
-  };
-
-  const saveLocalStorage = () => {
-    const localTodo = JSON.parse(localStorage.getItem("todo"));
-    if (localTodo === null) {
-      localStorage.setItem("todo", "[]");
-    }
-
-    if (localTodo.find((param) => param.title === todo) !== undefined) {
-      alert("Todo가 중복됩니다.");
-      return;
-    }
-
-    const array = [];
-    array.push(...localTodo, { done: false, title: todo });
-    localStorage.setItem("todo", JSON.stringify(array));
-  };
-
   return (
     <footer className={styles.footer}>
       <input
+        value={inputTodo}
         type="text"
         className={styles.input}
-        onChange={handleTodo}
-        onKeyDown={saveKeyLocalStorage}
+        onChange={handleInputTodo}
+        onKeyDown={handleEnter}
       />
-      <button className={styles.button} onClick={saveLocalStorage}>
+      <button className={styles.button} onClick={addTodo}>
         Add
       </button>
     </footer>
