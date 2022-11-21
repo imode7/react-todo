@@ -6,6 +6,14 @@
   align-items: baseline;
 }
 
+.darkArticle {
+  height: 80%;
+  display: flex;
+  width: 100%;
+  background-color: #474e68;
+  align-items: baseline;
+}
+
 input {
   width: 1.3rem;
   height: 1.3rem;

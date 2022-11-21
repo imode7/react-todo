@@ -8,7 +8,7 @@ export default function Header() {
   const [active, setActive] = useState("All");
 
   const { handleChangeMenu } = useContext(MenuListContext);
-  const { toggleDarkMode } = useContext(DarkModeContext);
+  const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
     fetch(`/Menu.json`)
@@ -19,7 +19,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header>
+    <header className={darkMode ? styles.darkHeader : styles.header}>
       <button className={styles.button} onClick={toggleDarkMode}>
         <img src="/images/light-icon.png" alt="" />
       </button>

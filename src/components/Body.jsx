@@ -2,15 +2,17 @@ import React, { useContext } from "react";
 import styles from "./Body.module.css";
 import { TodoContext } from "../context/TodoContext";
 import { MenuListContext } from "../context/MenuListContext";
+import { DarkModeContext } from "../context/DarkModeContext";
 
 export default function Body() {
   const { todo, toggleTodoDone, editTodo, deleteTodo } =
     useContext(TodoContext);
   const { nav } = useContext(MenuListContext);
+  const { darkMode } = useContext(DarkModeContext);
 
   if (nav === "Active") {
     return (
-      <article className={styles.article}>
+      <article className={darkMode ? styles.darkArticle : styles.article}>
         <section>
           <div>
             <ul>
@@ -55,7 +57,7 @@ export default function Body() {
 
   if (nav === "Completed") {
     return (
-      <article className={styles.article}>
+      <article className={darkMode ? styles.darkArticle : styles.article}>
         <section>
           <div>
             <ul>
@@ -99,7 +101,7 @@ export default function Body() {
   }
 
   return (
-    <article className={styles.article}>
+    <article className={darkMode ? styles.darkArticle : styles.article}>
       <section>
         <div>
           <ul>

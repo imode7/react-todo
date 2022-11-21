@@ -1,10 +1,19 @@
-header {
+.header {
   height: 10%;
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
   background-color: #d7f6e2;
+}
+
+.darkHeader {
+  height: 10%;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #404258;
 }
 
 .button {

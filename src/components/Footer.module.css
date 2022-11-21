@@ -7,6 +7,15 @@
   background-color: #d1983e;
 }
 
+.darkFooter {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #50577a;
+}
+
 .input {
   width: 70%;
   height: 60%;
