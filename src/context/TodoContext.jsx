@@ -28,7 +28,31 @@ export function TodoProvider({ children }) {
     setInputTodo("");
   };
 
-  const toggleTodoDone = (param, idx) => {
+  const editTodo = (beforeTodo) => {
+    const editTitle = prompt("Todo Title을 바꿔주세요.");
+
+    if (todo.find((param) => param.title === editTitle) !== undefined) {
+      alert("Todo가 중복됩니다.");
+      return;
+    }
+
+    const idx = todo.findIndex((elem) => elem.title === beforeTodo.title);
+    const tempTodo = [...todo];
+    tempTodo[idx].title = editTitle;
+    setTodo(tempTodo);
+    localStorage.setItem("todo", JSON.stringify(tempTodo));
+  };
+
+  const deleteTodo = (param) => {
+    const idx = todo.findIndex((elem) => elem.title === param.title);
+    const tempTodo = [...todo];
+    tempTodo.splice(idx, 1);
+    setTodo(tempTodo);
+    localStorage.setItem("todo", JSON.stringify(tempTodo));
+  };
+
+  const toggleTodoDone = (param) => {
+    const idx = todo.findIndex((elem) => elem.title === param.title);
     const tempTodo = [...todo];
     tempTodo[idx] = { ...tempTodo[idx], done: !param.done };
     setTodo(tempTodo);
@@ -37,7 +61,15 @@ export function TodoProvider({ children }) {
 
   return (
     <TodoContext.Provider
-      value={{ todo, toggleTodoDone, handleInputTodo, addTodo, inputTodo }}
+      value={{
+        todo,
+        toggleTodoDone,
+        handleInputTodo,
+        addTodo,
+        deleteTodo,
+        inputTodo,
+        editTodo,
+      }}
     >
       {children}
     </TodoContext.Provider>

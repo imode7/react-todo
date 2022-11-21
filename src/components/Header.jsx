@@ -29,7 +29,8 @@ export default function Header() {
             <li
               key={idx}
               onClick={() => {
-                return setActive(param), handleChangeMenu(param);
+                setActive(param);
+                handleChangeMenu(param);
               }}
               className={active === param ? styles.activeLi : null}
             >

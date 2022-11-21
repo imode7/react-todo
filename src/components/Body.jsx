@@ -4,10 +4,11 @@ import { TodoContext } from "../context/TodoContext";
 import { MenuListContext } from "../context/MenuListContext";
 
 export default function Body() {
-  const { todo, toggleTodoDone } = useContext(TodoContext);
+  const { todo, toggleTodoDone, editTodo, deleteTodo } =
+    useContext(TodoContext);
   const { nav } = useContext(MenuListContext);
 
-  /*if (nav === "Active") {
+  if (nav === "Active") {
     return (
       <article className={styles.article}>
         <section>
@@ -20,12 +21,29 @@ export default function Body() {
                     <div>
                       <input
                         type="checkbox"
-                        onChange={toggleCheckBox}
-                        checked={false}
+                        onChange={() => toggleTodoDone(param)}
+                        checked={param.done}
                       />
                       <span>{param.title}</span>
                     </div>
-                    <img src="/images/bin.png" alt="" />
+                    <div>
+                      <img
+                        src="/images/edit.png"
+                        alt=""
+                        className={styles.button}
+                        onClick={() => {
+                          editTodo(param);
+                        }}
+                      />
+                      <img
+                        src="/images/bin.png"
+                        alt=""
+                        className={styles.button}
+                        onClick={() => {
+                          deleteTodo(param);
+                        }}
+                      />
+                    </div>
                   </li>
                 ))}
             </ul>
@@ -48,12 +66,29 @@ export default function Body() {
                     <div>
                       <input
                         type="checkbox"
-                        onChange={toggleCheckBox}
+                        onChange={() => toggleTodoDone(param)}
                         checked={true}
                       />
                       <span>{param.title}</span>
                     </div>
-                    <img src="/images/bin.png" alt="" />
+                    <div>
+                      <img
+                        src="/images/edit.png"
+                        alt=""
+                        className={styles.button}
+                        onClick={() => {
+                          editTodo(param);
+                        }}
+                      />
+                      <img
+                        src="/images/bin.png"
+                        alt=""
+                        className={styles.button}
+                        onClick={() => {
+                          deleteTodo(param);
+                        }}
+                      />
+                    </div>
                   </li>
                 ))}
             </ul>
@@ -61,7 +96,7 @@ export default function Body() {
         </section>
       </article>
     );
-  }*/
+  }
 
   return (
     <article className={styles.article}>
@@ -74,12 +109,29 @@ export default function Body() {
                   <div>
                     <input
                       type="checkbox"
-                      onChange={() => toggleTodoDone(param, idx)}
+                      onChange={() => toggleTodoDone(param)}
                       checked={param.done}
                     />
                     <span>{param.title}</span>
                   </div>
-                  <img src="/images/bin.png" alt="" />
+                  <div>
+                    <img
+                      src="/images/edit.png"
+                      alt=""
+                      className={styles.button}
+                      onClick={() => {
+                        editTodo(param);
+                      }}
+                    />
+                    <img
+                      src="/images/bin.png"
+                      alt=""
+                      className={styles.button}
+                      onClick={() => {
+                        deleteTodo(param);
+                      }}
+                    />
+                  </div>
                 </li>
               );
             })}
