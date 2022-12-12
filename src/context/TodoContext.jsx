@@ -33,7 +33,7 @@ export function TodoProvider({ children }) {
   };
 
   const editTodo = (beforeTodo) => {
-    const editTitle = prompt("Todo Title을 바꿔주세요.");
+    const editTitle = prompt("Todo Title을 바꿔주세요.", beforeTodo.title);
 
     if (editTitle === null) return;
     if (editTitle === "") {
