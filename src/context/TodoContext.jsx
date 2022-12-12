@@ -15,6 +15,10 @@ export function TodoProvider({ children }) {
   };
 
   const addTodo = () => {
+    if (inputTodo === "") {
+      alert("내용을 입력해주세요.");
+      return;
+    }
     if (todo.find((param) => param.title === inputTodo) !== undefined) {
       alert("Todo가 중복됩니다.");
       return;
