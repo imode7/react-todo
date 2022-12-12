@@ -35,6 +35,12 @@ export function TodoProvider({ children }) {
   const editTodo = (beforeTodo) => {
     const editTitle = prompt("Todo Title을 바꿔주세요.");
 
+    if (editTitle === null) return;
+    if (editTitle === "") {
+      alert("내용을 입력해주세요.");
+      return;
+    }
+
     if (todo.find((param) => param.title === editTitle) !== undefined) {
       alert("Todo가 중복됩니다.");
       return;
